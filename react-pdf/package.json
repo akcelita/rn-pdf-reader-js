@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "rm -rf dist/ && NODE_ENV=production ./node_modules/.bin/webpack-cli --mode=production --optimize-minimize",
-    "dev": "./node_modules/.bin/webpack-dev-server --mode=development"
+    "build": "npx webpack-cli --mode=production --node-env=production",
+    "dev": "npx webpack-dev-server --mode=development"
   },
   "dependencies": {
     "@babel/runtime": "7.7.7",
