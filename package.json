@@ -1,10 +1,10 @@
 {
-  "name": "@valli_/rn-pdf-reader-js",
+  "name": "@akcelita/rn-pdf-reader-js",
   "version": "1.0.9",
   "description": "Fork From PDF reader for Expo - Xavier Carpentier <xcapetir@gmail.com> (https://xaviercarpentier.com/)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "author": "Tomas Valli",
+  "author": "Jose Ramos",
   "license": "MIT",
   "scripts": {
     "start": "npx expo start",
@@ -52,5 +52,5 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^5.1.3"
   },
-  "repository": "git@github.com:Valli-/rn-pdf-reader-js.git"
+  "repository": "git@github.com:akcelita/rn-pdf-reader-js.git"
 }
