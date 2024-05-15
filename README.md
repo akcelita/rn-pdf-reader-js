@@ -3,12 +3,6 @@
 
 <p align="center">
    <img width="250" src="https://thumbs.gfycat.com/DeadPoisedBrownbutterfly-max-14mb.gif" />
-   <br/>
-   <br/>
-   <br/>
-   <br/>
-<a href="http://reactnative.gallery/xcarpentier/rn-pdf-reader-js"><img src="https://img.shields.io/badge/reactnative.gallery-%F0%9F%8E%AC-green.svg"/></a>
-</a>
 </p>
 
 # Read a PDF just with JS (no native libs needed)
@@ -87,7 +81,7 @@ interface Props {
 | Direct from WebView | iOS          | uri or base64 |
 | Google PDF Reader   | Android, iOS | uri           |
 
-## What rn-pdf-reader-js use?
+## What does rn-pdf-reader-js use?
 
 - react-pdf (pdf.js)
 - WebView
