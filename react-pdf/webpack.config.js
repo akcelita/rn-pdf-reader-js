@@ -3,7 +3,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   context: __dirname,
-  entry: ['./Reader'],
+  entry: {
+    main: './index.js',
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -34,8 +36,6 @@ module.exports = {
     ],
   },
   externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
     'pdfjs-dist': 'pdfjsLib',
     'pdfjs-dist/lib/web/pdf_link_service': 'pdfjsViewer',
   },
