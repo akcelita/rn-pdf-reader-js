@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { render } from 'react-dom'
-import Document from 'react-pdf/dist/Document'
-import Page from 'react-pdf/dist/Page'
+import { Document, Page } from 'react-pdf'
 import raf, { cancel } from 'raf'
 import Down from './components/down'
 import Plus from './components/Plus'
