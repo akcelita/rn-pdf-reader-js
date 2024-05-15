@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -40,7 +39,13 @@ module.exports = {
     'pdfjs-dist': 'pdfjsLib',
     'pdfjs-dist/lib/web/pdf_link_service': 'pdfjsViewer',
   },
-  plugins: [new CopyWebpackPlugin([{ from: './index.html' }])],
+  plugins: [
+    new CopyWebpackPlugin({
+      'patterns': [
+        { from: './index.html' }
+      ]
+    })
+  ],
   optimization: {
     minimize: true,
   },
