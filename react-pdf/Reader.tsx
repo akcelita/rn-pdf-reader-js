@@ -1,12 +1,15 @@
 import * as React from 'react'
 import { render } from 'react-dom'
-import { Document, Page } from 'react-pdf'
+import { Document, Page, pdfjs } from 'react-pdf'
 import raf, { cancel } from 'raf'
 import Down from './components/down'
 import Plus from './components/Plus'
 import Minus from './components/Minus'
 import Up from './components/up'
 import './Reader.less'
+
+// import pdfjsWorker from "pdfjs-dist/build/pdf.worker"
+// pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 const ReactContainer = document.querySelector('#react-container')
 const version = '2.1.266'
