@@ -1,5 +1,4 @@
 
-export const bundle = `(()=>{var e,t=document.getElementById("pdf-canvas"),n=t.getAttribute("data"),i=t.getAttribute("url");if(n)e=pdfjsLib.getDocument(i);else{var o=atob(n);e=pdfjsLib.getDocument({data:o})}pdfjsLib.GlobalWorkerOptions.workerSrc="//cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.worker.min.js",e.promise.then((function(e){e.getPage(1).then((function(e){var n=e.getViewport({scale:1});t.width=n.width,t.height=n.height;var i={canvasContext:t.getContext("2d"),viewport:n};e.render(i)})).then((function(){console.log("Rendering complete")}))}))})();`;
 export const viewerHtmlTemplate = `<!DOCTYPE html>
 <html>
   <head>
@@ -27,7 +26,7 @@ export const viewerHtmlTemplate = `<!DOCTYPE html>
   </body>
 </html>
 `;
-export const viewerHtml = (base64, customStyle, withScroll = false, withPinchZoom = false, maximumPinchZoomScale = 5) => {
+export const getViewerHtml = (base64, customStyle, withScroll = false, withPinchZoom = false, maximumPinchZoomScale = 5) => {
   return viewerHtmlTemplate
     .replace('@{maximum_scale}', String(maximumPinchZoomScale))
     .replace('@{user_scalable}', withPinchZoom ? 'yes' : 'no')
@@ -38,3 +37,4 @@ export const viewerHtml = (base64, customStyle, withScroll = false, withPinchZoo
     .replace('@{base64}', base64)
   ;
 };
+export const getBundle = () => `(()=>{var e,t=document.getElementById("pdf-canvas"),n=t.getAttribute("data"),i=t.getAttribute("url");if(n)e=pdfjsLib.getDocument(i);else{var o=atob(n);e=pdfjsLib.getDocument({data:o})}pdfjsLib.GlobalWorkerOptions.workerSrc="//cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.worker.min.js",e.promise.then((function(e){e.getPage(1).then((function(e){var n=e.getViewport({scale:1});t.width=n.width,t.height=n.height;var i={canvasContext:t.getContext("2d"),viewport:n};e.render(i)})).then((function(){console.log("Rendering complete")}))}))})();`;

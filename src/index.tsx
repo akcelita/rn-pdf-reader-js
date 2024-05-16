@@ -10,7 +10,7 @@ import {
   WebViewHttpErrorEvent,
 } from 'react-native-webview/lib/WebViewTypes'
 
-import { bundle, viewerHtml } from './viewer'
+import { getBundle, getViewerHtml } from 'viewer'
 
 const { cacheDirectory, writeAsStringAsync, deleteAsync, getInfoAsync } =
   FileSystem
@@ -65,16 +65,6 @@ interface State {
   renderedOnce: boolean
 }
 
-function getViewerHtml(
-  base64: string,
-  customStyle?: CustomStyle,
-  withScroll: boolean = false,
-  withPinchZoom: boolean = false,
-  maximumPinchZoomScale: number = 5,
-): string {
-  return viewerHtml(base64, customStyle, withScroll, withPinchZoom, maximumPinchZoomScale);
-}
-
 // PATHS
 const bundleJsPath = `${cacheDirectory}bundle.js`
 const htmlPath = `${cacheDirectory}index.html`
@@ -89,7 +79,7 @@ async function writeWebViewReaderFileAsync(
 ): Promise<void> {
   const { exists } = (await getInfoAsync(bundleJsPath)) as any
   if (__DEV__ || !exists ) {
-    await writeAsStringAsync(bundleJsPath, bundle)
+    await writeAsStringAsync(bundleJsPath, getBundle())
   }
   await writeAsStringAsync(
     htmlPath,

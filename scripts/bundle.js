@@ -27,9 +27,9 @@ const viewerHtml = (base64, customStyle, withScroll = false, withPinchZoom = fal
 
 
 const viewerFileContent = `
-export const bundle = \`${bundle}\`;
 export const viewerHtmlTemplate = \`${viewerHtmlTemplate}\`;
-export const viewerHtml = ${viewerHtml.toString()};
+export const getViewerHtml = ${viewerHtml.toString()};
+export const getBundle = () => \`${bundle}\`;
 `
 
 if (fs.existsSync(destinationPath)) {
