@@ -1,14 +1,26 @@
 // Get the canvas element.
 const canvas = document.getElementById('pdf-canvas');
 
-// Get the PDF file URL.
-const pdfUrl = 'https://pdfobject.com/pdf/sample.pdf';
+// Declare loading task
+let loadingTask;
+
+// See if there is base64 data
+const pdfBase64 = canvas.getAttribute("data");
+const pdfUrl = canvas.getAttribute("url");
+if (!pdfBase64) {
+	const pdfData = atob(pdfBase64);
+	loadingTask = pdfjsLib.getDocument({data: pdfData});
+}
+else {
+	// fallback url
+	loadingTask = pdfjsLib.getDocument(pdfUrl);
+}
 
 // Set worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.worker.min.js'
 
 // Load the PDF file using PDF.js.
-pdfjsLib.getDocument(pdfUrl).promise.then(function (pdfDoc) {
+loadingTask.promise.then(function (pdfDoc) {
 	// Get the first page of the PDF file.
 	pdfDoc.getPage(1)
 		.then(function (page) {

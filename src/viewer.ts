@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+export const bundle = `(()=>{var e,t=document.getElementById("pdf-canvas"),n=t.getAttribute("data"),i=t.getAttribute("url");if(n)e=pdfjsLib.getDocument(i);else{var o=atob(n);e=pdfjsLib.getDocument({data:o})}pdfjsLib.GlobalWorkerOptions.workerSrc="//cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.worker.min.js",e.promise.then((function(e){e.getPage(1).then((function(e){var n=e.getViewport({scale:1});t.width=n.width,t.height=n.height;var i={canvasContext:t.getContext("2d"),viewport:n};e.render(i)})).then((function(){console.log("Rendering complete")}))}))})();`, viewer = `<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -24,3 +24,4 @@
     <script src="bundle.js"></script>
   </body>
 </html>
+`;

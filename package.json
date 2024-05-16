@@ -9,7 +9,7 @@
   "scripts": {
     "start": "npx expo start",
     "tsc": "node_modules/.bin/tsc --noEmit",
-    "bundle": "./scripts/gen_bundle_string.js",
+    "bundle": "./scripts/bundle.js",
     "build": "yarn bundle && node_modules/.bin/tsc",
     "config:dev": "json -I -f package.json -e 'this.main=\"node_modules/expo/AppEntry.js\"'",
     "config:npm": "json -I -f package.json -e 'this.main=\"lib/index.js\"'",
@@ -26,7 +26,6 @@
     "reader",
     "pdf-reader",
     "pdf-viewer",
-    "react-pdf",
     "expo"
   ],
   "dependencies": {
