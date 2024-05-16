@@ -8,13 +8,13 @@
   "license": "MIT",
   "scripts": {
     "start": "npx expo start",
-    "tsc": "node_modules/.bin/tsc --noEmit",
+    "tsc": "npx tsc --noEmit",
     "bundle": "./scripts/bundle.js",
-    "build": "yarn bundle && node_modules/.bin/tsc",
-    "config:dev": "json -I -f package.json -e 'this.main=\"node_modules/expo/AppEntry.js\"'",
-    "config:npm": "json -I -f package.json -e 'this.main=\"lib/index.js\"'",
+    "build": "yarn bundle && npx tsc -p .",
     "lint": "tslint --project .",
     "verify": "yarn lint && yarn tsc && yarn build",
+    "config:dev": "json -I -f package.json -e 'this.main=\"node_modules/expo/AppEntry.js\"'",
+    "config:npm": "json -I -f package.json -e 'this.main=\"lib/index.js\"'",
     "prepublishOnly": "yarn verify && yarn config:npm",
     "postpublish": "yarn config:dev",
     "cleaning": "rm -rf node_modules && rm -f yarn.lock && yarn cache clean && yarn install && watchman watch-del-all && rm -fr $TMPDIR/react-*"
@@ -30,8 +30,7 @@
   ],
   "dependencies": {
     "buffer": "^6.0.3",
-    "csstype": "^3.1.1",
-    "js-base64": "^2.4.5"
+    "csstype": "^3.1.1"
   },
   "devDependencies": {
     "@types/react": "~18.2.14",

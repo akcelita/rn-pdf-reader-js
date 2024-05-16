@@ -1,10 +1,12 @@
 {
   "include": [
-    "src"
+    "src",
+    "App.tsx"
   ],
   "compilerOptions": {
     "declaration": true,
     "outDir": "./lib",
+    "noEmit": false,
     "strict": true,
     "removeComments": true,
     "jsx": "react",
