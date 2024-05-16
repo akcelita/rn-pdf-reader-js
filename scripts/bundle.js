@@ -3,8 +3,8 @@
 const fs = require('fs')
 const path = require('path')
 
-const bundlePath = path.join(__dirname, '../react-pdf/dist/bundle.js')
-const viewerPath = path.join(__dirname, '../react-pdf/dist/index.html')
+const bundlePath = path.join(__dirname, '../custom-viewer/dist/bundle.js')
+const viewerPath = path.join(__dirname, '../custom-viewer/dist/index.html')
 const destinationPath = path.join(__dirname, '../src/viewer.js')
 
 const encoding = { encoding: 'utf8' }
@@ -25,10 +25,9 @@ const viewerHtml = (base64, customStyle, withScroll = false, withPinchZoom = fal
   ;
 };
 
-
 const viewerFileContent = `
 export const viewerHtmlTemplate = \`${viewerHtmlTemplate}\`;
-export const getViewerHtml = ${viewerHtml.toString()};
+export const getViewerHtml = ${viewerHtml};
 export const getBundle = () => \`${bundle}\`;
 `
 
