@@ -10,6 +10,8 @@ import {
   WebViewHttpErrorEvent,
 } from 'react-native-webview/lib/WebViewTypes'
 
+import { bundle, viewer } from './viewer'
+
 const { cacheDirectory, writeAsStringAsync, deleteAsync, getInfoAsync } =
   FileSystem
 
@@ -70,51 +72,16 @@ function viewerHtml(
   withPinchZoom: boolean = false,
   maximumPinchZoomScale: number = 5,
 ): string {
-  return `
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>PDF reader</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=${
-      withPinchZoom ? `${maximumPinchZoomScale}.0` : '1.0'
-    }, user-scalable=${withPinchZoom ? 'yes' : 'no'}" />
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/web/pdf_viewer.min.js"></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@16/umd/react.production.min.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
-    ></script>
-    <script>
-      pdfjsLib.GlobalWorkerOptions.workerSrc =
-        'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.worker.min.js'
-    </script>
-    <script type="application/javascript">
-      try {
-        window.CUSTOM_STYLE = JSON.parse('${JSON.stringify(
-          customStyle ?? {},
-        )}');
-      } catch (error) {
-        window.CUSTOM_STYLE = {}
-      }
-      try {
-        window.WITH_SCROLL = JSON.parse('${JSON.stringify(withScroll)}');
-      } catch (error) {
-        window.WITH_SCROLL = {}
-      }
-    </script>
-  </head>
-  <body>
-     <div id="file" data-file="${base64}"></div>
-     <div id="react-container"></div>
-     <script type="text/javascript" src="bundle.js"></script>
-   </body>
-</html>
-`
+  return (
+    viewer
+    .replace('@{maximum_scale}', String(maximumPinchZoomScale))
+    .replace('@{user_scalable}', withPinchZoom ? 'yes' : 'no')
+    .replace('@{custom_style}', JSON.stringify(
+      customStyle ?? {},
+    ))
+    .replace('@{with_scroll}', JSON.stringify(withScroll))
+    .replace('@{base64}', base64)
+  );
 }
 
 // PATHS
@@ -129,12 +96,9 @@ async function writeWebViewReaderFileAsync(
   withPinchZoom?: boolean,
   maximumPinchZoomScale?: number,
 ): Promise<void> {
-  const { exists, md5 } = (await getInfoAsync(bundleJsPath, {
-    md5: true,
-  })) as any
-  const bundleContainer = require('./bundleContainer')
-  if (__DEV__ || !exists || bundleContainer.getBundleMd5() !== md5) {
-    await writeAsStringAsync(bundleJsPath, bundleContainer.getBundle())
+  const { exists } = (await getInfoAsync(bundleJsPath)) as any
+  if (__DEV__ || !exists ) {
+    await writeAsStringAsync(bundleJsPath, bundle)
   }
   await writeAsStringAsync(
     htmlPath,
