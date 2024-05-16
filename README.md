@@ -83,10 +83,6 @@ interface Props {
 
 ## What does rn-pdf-reader-js use?
 
-- react-pdf (pdf.js)
+- pdf.js
 - WebView
 - Base64
-
-## FAQ
-
-- [Why the component doesn't render PDF?](https://github.com/xcarpentier/rn-pdf-reader-js/issues/15#issuecomment-397306743)
