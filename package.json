@@ -7,7 +7,7 @@
   "author": "Jose Ramos",
   "license": "MIT",
   "scripts": {
-    "prepare": "yarn build",
+    "prepare": "yarn --cwd \"./react-pdf\" build && yarn build",
     "start": "npx expo start",
     "tsc": "node_modules/.bin/tsc --noEmit",
     "bundle": "./scripts/gen_bundle_string.js",
