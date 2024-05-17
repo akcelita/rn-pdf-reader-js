@@ -33,12 +33,6 @@ module.exports = {
       },
     ],
   },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    'pdfjs-dist': 'pdfjsLib',
-    'pdfjs-dist/lib/web/pdf_link_service': 'pdfjsViewer',
-  },
   plugins: [
     new CopyWebpackPlugin({
       'patterns': [

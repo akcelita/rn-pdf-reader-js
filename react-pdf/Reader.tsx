@@ -8,15 +8,14 @@ import Minus from './components/Minus'
 import Up from './components/up'
 import './Reader.less'
 
-// import pdfjsWorker from "pdfjs-dist/build/pdf.worker"
-// pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
-
 const ReactContainer = document.querySelector('#react-container')
-const version = '2.1.266'
+const version = '3.11.174'
 const options = {
   cMapUrl: `//cdn.jsdelivr.net/npm/pdfjs-dist@${version}/cmaps/`,
   cMapPacked: true,
 }
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdn.jsdelivr.net/npm/pdfjs-dist@${version}/build/pdf.worker.min.js`;
 
 interface Props {
   file: any
