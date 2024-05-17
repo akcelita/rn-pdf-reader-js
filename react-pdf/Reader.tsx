@@ -11,11 +11,11 @@ import './Reader.less'
 const ReactContainer = document.querySelector('#react-container')
 const version = '3.11.174'
 const options = {
-  cMapUrl: `//cdn.jsdelivr.net/npm/pdfjs-dist@${version}/cmaps/`,
+  cMapUrl: `http://cdn.jsdelivr.net/npm/pdfjs-dist@${version}/cmaps/`,
   cMapPacked: true,
 }
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdn.jsdelivr.net/npm/pdfjs-dist@${version}/build/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `http://cdn.jsdelivr.net/npm/pdfjs-dist@${version}/build/pdf.worker.min.js`;
 
 interface Props {
   file: any
