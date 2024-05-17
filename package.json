@@ -1,12 +1,13 @@
 {
   "name": "@akcelita/rn-pdf-reader-js",
-  "version": "1.0.9",
-  "description": "Fork From PDF reader for Expo - Xavier Carpentier <xcapetir@gmail.com> (https://xaviercarpentier.com/)",
+  "version": "1.0.10",
+  "description": "PDF reader for Expo (Forked From Xavier Carpentier)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "Jose Ramos",
   "license": "MIT",
   "scripts": {
+    "prepare": "yarn build",
     "start": "npx expo start",
     "tsc": "node_modules/.bin/tsc --noEmit",
     "bundle": "./scripts/gen_bundle_string.js",
